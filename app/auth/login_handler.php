@@ -27,6 +27,8 @@ if (isset($_POST['action'])) {
                     session_start();
                     $_SESSION['user'] = $result;
 
+                    unset($_SESSION['user']['password']);
+
                     header("Location: /app/index.php");
                     exit;
                 }
