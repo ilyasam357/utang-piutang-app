@@ -21,7 +21,7 @@ foreach ($transactions as $transaction):
 ?>
 
             <tr>
-                <td><?=$num?></td>
+                <td><?=$num++?></td>
                 <td><?=$transaction['use_for']?></td>
                 <td><?=$transaction['person_id']?></td>
                 <td><?=$transaction['nominal']?></td>
