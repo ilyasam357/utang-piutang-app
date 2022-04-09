@@ -1,5 +1,5 @@
 <div class="container">
-    <h1 class="mb-3">Transactions</h1>
+    <h1 class="mb-3">Transactions -<?=$where === 'debt' ? 'utang' : 'piutang'?></h1>
 
     <table class="table table-striped table-bordered">
         <thead class="table-dark">
@@ -7,7 +7,7 @@
                 <th>NO</th>
                 <th>Untuk</th>
                 <th>Orang</th>
-                <th>NOminal</th>
+                <th>Nominal</th>
                 <th>Status</th>
                 <th>Jatuh Tempo</th>
                 <th>Action</th>
