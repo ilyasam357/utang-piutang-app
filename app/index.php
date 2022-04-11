@@ -9,7 +9,8 @@ if (!isset($_SESSION['user'])) {
 include_once '../configs/db.php';
 
 include_once './handlers/home_handler.php';
-include_once './handlers/transaction_hendler.php';
+include_once './handlers/transaction/transaction_hendler.php';
+include_once './handlers/transaction/create_trx_handler.php';
 
 include_once './templates/header.php';
 include_once './templates/navbar.php';
