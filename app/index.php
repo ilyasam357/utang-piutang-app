@@ -17,7 +17,20 @@ include_once './templates/navbar.php';
 if (isset($_GET['page'])) {
     switch ($_GET['page']) {
         case 'transactions':
-            include_once './pages/transactions/index.php';
+            if (isset($_GET['action'])) {
+                switch ($_GET['action']) {
+                    case 'create':
+                        include_once './pages/transactions/create.php';
+                        break;
+
+                    default:
+                        include_once './pages/transactions/index.php';
+                        break;
+                }
+            } else {
+                include_once './pages/transactions/index.php';
+            }
+
             break;
 
         default:
