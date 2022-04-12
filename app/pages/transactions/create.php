@@ -2,7 +2,7 @@
     <h1>create -<?=$where === 'debt' ? 'Hutang' : 'Piutang'?></h1>
 
     <div class="row">
-        <div class="col-6">
+        <div class="col-6 mb-4">
             <form action=" <?php $_SERVER['REQUEST_URI']?>" method="POST">
                 <div class="mb-3">
                     <label for="use_for" class="form-label">Kegunaan</label>
@@ -11,7 +11,7 @@
                 <div class="mb-3">
                     <label for="fav_person" class="form-label">Orang Favorit</label>
                     <select class="form-select" name="fav_person  ">
-                        <option value="-">Pilih orang favorit</option>
+                        <option selected value="-">Pilih orang favorit</option>
                         <option value="budi">Budi </option>
                         <option value="joko">Joko</option>
 
