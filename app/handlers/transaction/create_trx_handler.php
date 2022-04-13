@@ -5,8 +5,8 @@ if (isset($_POST['action'])) {
         $fav_person = 1;
         $new_person = htmlspecialchars($_POST['new_person']);
         $nominal = htmlspecialchars($_POST['nominal']);
-        $transaction_at = "2022-04-07 09:47:38";
-        $due_date = "2022-04-08 09:47:38";
+        $transaction_at = htmlspecialchars($_POST['transaction_at']);
+        $due_date = htmlspecialchars($_POST['due_date']);
         $type = htmlspecialchars($_POST['type']);
 
         $errors = [];
@@ -15,9 +15,13 @@ if (isset($_POST['action'])) {
             if (empty($val)) {
                 $new_key = ucfirst($key);
 
-                array_push($errors, str_replace("_", " ", $new_key) . "kosong");
+                array_push($errors, str_replace("_", " ", $new_key) . " kosong");
             }
         }
+
+        $tgl = str_replace("T", " ", $transaction_at);
+
+        $tgl2 = str_replace("T", " ", $due_date);
 
         if (!empty($nominal) && strlen($nominal) > 11) {
             array_push($errors, "gak boleh dari sebelas");
