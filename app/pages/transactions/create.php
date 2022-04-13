@@ -1,5 +1,5 @@
 <div class="container">
-    <h1>create -<?=$where === 'debt' ? 'Hutang' : 'Piutang'?></h1>
+    <h1>create <?=$title?></h1>
 
     <div class="row">
         <div class="col-6 mb-4">
