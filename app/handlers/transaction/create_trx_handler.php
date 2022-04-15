@@ -9,11 +9,13 @@ function fmt_to_timestamp($date)
 
 function insert_persons($con, $name)
 {
+    global $session_user_id;
+
     $person = is_person_exists($con, $name);
     if ($person[0]) {
         return $person[1];
     }
-    $insert = mysqli_query($con, "INSERT  INTO persons(name) VALUES('$name')");
+    $insert = mysqli_query($con, "INSERT  INTO persons(name, user_id) VALUES('$name', '$session_user_id')");
     $last_insert_id = mysqli_insert_id($con);
 
     return $last_insert_id;
@@ -67,9 +69,7 @@ if (isset($_POST['action'])) {
                 $fav_person = insert_persons($con, $new_person);
             }
 
-            $insert = mysqli_query($con, "INSERT INTO `transactions`(`type`, `user_for`, `person_id`, `nominal`, `transaction_at`, `due_date`) VALUES ('$type','$use_for','$fav_person','$nominal','$transaction_at','$due_date')");
-
-            mysqli_close($con);
+            $insert = mysqli_query($con, "INSERT INTO `transactions`(`type`,`user_id`, `user_for`, `person_id`, `nominal`, `transaction_at`, `due_date`) VALUES ('$type', '$session_user_id','$use_for','$fav_person','$nominal','$transaction_at','$due_date')");
 
             if ($insert) {
                 $alert = ['success', ['Berhasil di tambah  kan  ']];
