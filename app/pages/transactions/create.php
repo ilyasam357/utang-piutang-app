@@ -31,9 +31,12 @@ endif;
                 <div class="mb-3">
                     <label for="fav_person" class="form-label">Orang Favorit</label>
                     <select class="form-select" name="fav_person">
-                        <option selected value="-">Pilih orang favorit</option>
-                        <option value="budi">Budi </option>
-                        <option value="joko">Joko</option>
+                        <option selected value="">Pilih orang favorit</option>
+                        <?php foreach ($persons as $person): ?>
+                        <option value="<?=$person['id']?>"> <?=$person['name']?> </option>
+                        <?php endforeach;?>
+
+                        <option value="2">Joko</option>
 
                     </select>
 

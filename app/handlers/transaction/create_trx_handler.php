@@ -13,7 +13,7 @@ function insert_persons($con, $name)
     if ($person[0]) {
         return $person[1];
     }
-    $insert = mysqli_query($con, "INSERT * INTO persons(name) VALUES('$name')");
+    $insert = mysqli_query($con, "INSERT  INTO persons(name) VALUES('$name')");
     $last_insert_id = mysqli_insert_id($con);
 
     return $last_insert_id;
@@ -33,7 +33,7 @@ function is_person_exists($con, $name)
 if (isset($_POST['action'])) {
     if ($_POST['action'] === "create_trx") {
         $use_for = htmlspecialchars($_POST['use_for']);
-        $fav_person = 1;
+        $fav_person = htmlspecialchars($_POST['fav_person']);
         $new_person = htmlspecialchars($_POST['new_person']);
         $nominal = htmlspecialchars($_POST['nominal']);
         $transaction_at = htmlspecialchars($_POST['transaction_at']);
@@ -41,6 +41,12 @@ if (isset($_POST['action'])) {
         $due_date = htmlspecialchars($_POST['due_date']);
         $due_date = fmt_to_timestamp($due_date);
         $type = htmlspecialchars($_POST['type']);
+
+        if (empty($fav_person)) {
+            unset($_POST['fav_person']);
+        } else {
+            unset($_POST['new_person']);
+        }
 
         $errors = [];
 
@@ -76,3 +82,19 @@ if (isset($_POST['action'])) {
         }
     }
 }
+
+// to show list person
+
+function get_all_person($con)
+{
+    $person = mysqli_query($con, "SELECT * FROM persons");
+
+    $persons = [];
+
+    while ($row = mysqli_fetch_assoc($person)) {
+        array_push($persons, $row);
+    }
+    return $persons;
+}
+
+$persons = get_all_person($con);

@@ -25,6 +25,7 @@ if (isset($_POST['action'])) {
 
                 if ($password === $result['password']) {
                     session_start();
+
                     $_SESSION['user'] = $result;
 
                     unset($_SESSION['user']['password']);
