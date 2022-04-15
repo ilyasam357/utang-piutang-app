@@ -22,7 +22,9 @@ function insert_persons($con, $name)
 }
 function is_person_exists($con, $name)
 {
-    $person = mysqli_query($con, "SELECT * FROM persons WHERE name='$name'");
+
+    global $session_user_id;
+    $person = mysqli_query($con, "SELECT * FROM persons WHERE name='$name' AND user_id='$session_user_id'");
     $row = mysqli_fetch_assoc($person);
 
     if (mysqli_num_rows($person) > 0) {
@@ -87,7 +89,9 @@ if (isset($_POST['action'])) {
 
 function get_all_person($con)
 {
-    $person = mysqli_query($con, "SELECT * FROM persons");
+    global $session_user_id;
+
+    $person = mysqli_query($con, "SELECT * FROM persons WHERE user_id='$session_user_id'");
 
     $persons = [];
 

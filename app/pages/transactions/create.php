@@ -36,7 +36,7 @@ endif;
                         <option value="<?=$person['id']?>"> <?=$person['name']?> </option>
                         <?php endforeach;?>
 
-                        <option value="2">Joko</option>
+
 
                     </select>
 
