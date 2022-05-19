@@ -19,8 +19,8 @@
                     <label for="email" class="form-label">Email</label>
                     <input type="email" class="form-control" id="email" name="email" value="<?=$username ?? ''?>">
                 </div>
-                <input type="hidden" name="action" value="register">
-                <button type="submit" class="btn btn-primary" value="register">simpan</button>
+                <input type="hidden" name="action" value="edit">
+                <button type="submit" class="btn btn-primary" value="edit">simpan</button>
             </form>
 
         </div>
