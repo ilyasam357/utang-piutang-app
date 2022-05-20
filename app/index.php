@@ -14,6 +14,7 @@ global $session_user_id;
 
 include_once './handlers/home_handler.php';
 include_once './handlers/profile/profile_handler.php';
+include_once './handlers/profile/edit_handler.php';
 include_once './handlers/transaction/transaction_hendler.php';
 include_once './handlers/transaction/create_trx_handler.php';
 

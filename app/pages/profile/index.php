@@ -4,7 +4,7 @@
         <div class="col-md-4">
             <h1 class="mt-4">profil</h1>
             <div class="card shadow rounded border border-success  " style="width:15rem;">
-                <img src="/public/profil.png" class="rounded-circle mx-5 mt-3 "
+                <img src="<?=$user['avatar'] ? $user['avatar'] : ''?>" class="rounded-circle mx-5 mt-3 "
                     style=" width: 142px;   height: 142px;   object-fit: cover;   object-position: center; " alt="...">
 
                 <div class="card-body  bg-secondary mt-3">

@@ -9,10 +9,7 @@ if (isset($alert)):
             <div class="alert alert-<?=$alert[0]?> alert-dismissible fade show" role="alert">
                 <ul>
                     <?php
-// echo "<pre>". print_r([
-//     "register.php - 63",
-//     $alert
-// ], 1) ."</pre>";
+
 foreach ($alert[1] as $alert_msg) {
     echo '<li><strong>' . $alert_msg . '</strong></li>';
 }
