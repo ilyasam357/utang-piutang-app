@@ -18,7 +18,7 @@ foreach ($alert[1] as $alert_msg) {
             <?php
 endif;
 ?>
-            <form action="" method="post">
+            <form action="" method="post" enctype="multipart/form-data">
                 <div class="mb-3 ">
                     <label for="name" class="form-label">Nama lengkap</label>
                     <input type="text" class="form-control" id="name" name="name" value="<?=$user['name'] ?? ''?>">

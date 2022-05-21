@@ -33,11 +33,22 @@ if (isset($_POST['action'])) {
             if (!empty($password)) {
                 $query .= ", password='$password'";
             }
+
+            if (isset($_FILES['avatar'])) {
+                [$moved, $avatar_name] = upload_avatar();
+
+                if ($moved) {
+                    $query .= ", avatar='$avatar_name'";
+                }
+            }
+
             $query .= " WHERE id ='$session_user_id'";
 
             $update = mysqli_query($con, $query);
             if ($update) {
                 $alert = ['success', ['Berhasil di edit  ']];
+
+                $_SESSION['user']['name'] = $fullname;
             } else {
                 $alert = ['danger', ['Gagal di edit  ']];
             }
@@ -48,4 +59,20 @@ if (isset($_POST['action'])) {
 
     }
 
+}
+
+function upload_avatar()
+{
+    $avatar = $_FILES['avatar'];
+    global $session_user_id;
+
+    $imageFileType = strtolower(pathinfo($avatar['name'], PATHINFO_EXTENSION));
+
+    $target_dir = "../public/avatar/";
+    $avatar_name = $session_user_id . "_" . time() . "." . $imageFileType;
+    $target_file = $target_dir . $avatar_name;
+
+    $moved = move_uploaded_file($avatar['tmp_name'], $target_file);
+
+    return [$moved, $avatar_name];
 }
