@@ -5,6 +5,24 @@
             class="bi bi-plus-circle"></i>
         Tambah </a>
 
+    <?php
+if (isset($alert)):
+?>
+    <div class="alert alert-<?=$alert[0]?> alert-dismissible fade show mt-3" role="alert">
+        <ul>
+            <?php
+
+foreach ($alert[1] as $alert_msg) {
+    echo '<li><strong>' . $alert_msg . '</strong></li>';
+}
+?>
+        </ul>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" arial-label="Close"></button>
+    </div>
+    <?php
+endif;
+?>
+
     <table class="table table-striped table-bordered mt-4">
         <thead class="table-dark">
             <tr>
@@ -18,35 +36,52 @@
             </tr>
         </thead>
         <tbody>
-            <?php
+
+            <?php if (count($transactions) === 0): ?>
+
+        <tbody>
+            <tr>
+                <td colspan="7" class="text-center fw-bold">
+                    data masih kososng
+                </td>
+            </tr>
+        </tbody>
+        <?php endif;?>
+
+
+        <?php
 $num = 1;
 
 foreach ($transactions as $transaction):
 ?>
 
-            <tr>
-                <td><?=$num++?></td>
-                <td><?=$transaction['use_for']?></td>
-                <td><?=$transaction['name']?></td>
-                <td><?=$transaction['nominal']?></td>
-                <td>
-                    <span class="badge bg-danger"><?=$transaction['status']?></span>
-                </td>
-                <td><?=date("d F Y H:i:s", strtotime($transaction['due_date']))?></td>
-                <td>
-                    <button class="btn btn-warning btn-sm">
-                        <i class="bi bi-pencil-square"></i>
-                    </button>
-                    <button class="btn btn-danger btn-sm">
+        <tr>
+            <td><?=$num++?></td>
+            <td><?=$transaction['use_for']?></td>
+            <td><?=$transaction['name']?></td>
+            <td><?=$transaction['nominal']?></td>
+            <td>
+                <span class="badge bg-danger"><?=$transaction['status']?></span>
+            </td>
+            <td><?=date("d F Y H:i:s", strtotime($transaction['due_date']))?></td>
+            <td>
+                <button class="btn btn-warning btn-sm">
+                    <i class="bi bi-pencil-square"></i>
+                </button>
+                <form action="" method="post" class="trx_delete_form" onclick="return confirm('yakin gak)">
+                    <input type="hidden" name="action" value="delete">
+                    <input type="hidden" name="id" value="<?=$transaction['id']?>">
+                    <button type="submit" class="btn btn-danger btn-sm">
                         <i class="bi bi-trash3-fill"></i>
                     </button>
-                    <button class="btn btn-info btn-sm">
-                        <i class="bi bi-eye-fill"></i>
-                    </button>
-                </td>
+                </form>
+                <button class="btn btn-info btn-sm">
+                    <i class="bi bi-eye-fill"></i>
+                </button>
+            </td>
 
-            </tr>
-            <?php endforeach?>
+        </tr>
+        <?php endforeach?>
         </tbody>
     </table>
 </div>

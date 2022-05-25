@@ -47,13 +47,13 @@ if (isset($_POST['action'])) {
                 $query .= ", password='$password'";
             }
 
-            if (isset($_FILES['avatar'])) {
-                [$moved, $avatar_name] = upload_avatar();
+            // if (isset($_FILES['avatar'])) {
+            // [$moved, $avatar_name] = upload_avatar();
 
-                if ($moved) {
-                    $query .= ", avatar='$avatar_name'";
-                }
+            if ($moved) {
+                $query .= ", avatar='$avatar_name'";
             }
+            // }
 
             $query .= " WHERE id ='$session_user_id'";
 
@@ -87,12 +87,12 @@ function upload_avatar()
 
     // if ext not valid, reject!
     if (!in_array($imageFileType, $allowableFileType)) {
-        array_push($errors = "Avatar tidak di valid!");
+        array_push($errors, "Avatar tidak di valid!");
     }
 
     // if bigger than 1 mb, reject!
     if ($avatar['size'] > 1000000) {
-        array_push($errors = "Avatar harus lebih kecil dari 1 mb!");
+        array_push($errors, "Avatar harus lebih kecil dari 1 mb!");
     }
 
     $target_dir = "../public/avatar/";
