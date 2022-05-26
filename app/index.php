@@ -19,6 +19,8 @@ if (isset($_GET['page'])) {
         case 'transactions':
             include_once './handlers/transactions/create_trx_handler.php';
             include_once './handlers/transactions/delete_trx_handler.php';
+            include_once './handlers/transactions/edit_trx_handler.php';
+            include_once './handlers/transactions/change_trx_status.php';
             include_once './handlers/transactions/transaction_handler.php';
             break;
         default:
@@ -55,9 +57,15 @@ if (isset($_GET['page'])) {
                     case 'create':
                         include_once './pages/transactions/create.php';
                         break;
+
+                    case 'edit':
+                        include_once './pages/transactions/edit_trx.php';
+                        break;
+
                     default:
                         include_once './pages/transactions/index.php';
                         break;
+
                 }
             } else {
                 include_once './pages/transactions/index.php';

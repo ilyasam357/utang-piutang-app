@@ -61,14 +61,39 @@ foreach ($transactions as $transaction):
             <td><?=$transaction['name']?></td>
             <td><?=$transaction['nominal']?></td>
             <td>
-                <span class="badge bg-danger"><?=$transaction['status']?></span>
+                <div class="btn-group">
+                    <button type="button" class="btn  dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                        <span
+                            class="badge bg-<?=$transaction['status_badge_color'][0]?> <?=$transaction['status_badge_color'][1]?>"><?=$transaction['status']?></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <?php foreach ($transaction['trx_status'] as $ts): ?>
+                            <form method="post">
+                                <input type="hidden" name="id" value="<?=$transaction['id']?>">
+                                <input type="hidden" name="action" value="change_trx_status">
+                                <input type="hidden" name="trx_status" value="<?=$ts?>">
+                                <button type="submit" class="dropdown-item" href="#"><?=ucwords($ts)?> </button>
+                            </form>
+                            <?php endforeach;?>
+                        </li>
+
+                        <?php if (count($transaction['trx_status']) === 1 && $transaction['status'] !== 'paid'): ?>
+
+
+                        <li><a class="dropdown-item" href="#">Installment</a></li>
+                        <?php endif;?>
+
+                    </ul>
+                </div>
+
             </td>
             <td><?=date("d F Y H:i:s", strtotime($transaction['due_date']))?></td>
             <td>
-                <button class="btn btn-warning btn-sm">
+                <a href="/app/index.php?page=transactions&view=<?=$where?>&action=edit" class="btn btn-warning btn-sm">
                     <i class="bi bi-pencil-square"></i>
-                </button>
-                <form action="" method="post" class="trx_delete_form" onclick="return confirm('yakin gak)">
+                </a>
+                <form action="" method="post" class="trx_delete_form" onclick="return confirm('yakin gak')">
                     <input type="hidden" name="action" value="delete">
                     <input type="hidden" name="id" value="<?=$transaction['id']?>">
                     <button type="submit" class="btn btn-danger btn-sm">

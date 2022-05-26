@@ -71,7 +71,7 @@ if (isset($_POST['action'])) {
                 $fav_person = insert_persons($con, $new_person);
             }
 
-            $insert = mysqli_query($con, "INSERT INTO `transactions`(`type`,`user_id`, `user_for`, `person_id`, `nominal`, `transaction_at`, `due_date`) VALUES ('$type', '$session_user_id','$use_for','$fav_person','$nominal','$transaction_at','$due_date')");
+            $insert = mysqli_query($con, "INSERT INTO `transactions`(`type`,`user_id`, `use_for`, `person_id`, `nominal`, `transaction_at`, `due_date`) VALUES ('$type', '$session_user_id','$use_for','$fav_person','$nominal','$transaction_at','$due_date')");
 
             if ($insert) {
                 $alert = ['success', ['Berhasil di tambah  kan  ']];
