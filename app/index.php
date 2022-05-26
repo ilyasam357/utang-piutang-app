@@ -21,7 +21,9 @@ if (isset($_GET['page'])) {
             include_once './handlers/transactions/delete_trx_handler.php';
             include_once './handlers/transactions/edit_trx_handler.php';
             include_once './handlers/transactions/change_trx_status.php';
+            include_once './handlers/transactions/update_installment_trx_handler.php';
             include_once './handlers/transactions/transaction_handler.php';
+            include_once './handlers/transactions/edit_installment_trx_handler.php';
             break;
         default:
             include_once './handlers/home/home_handler.php';
@@ -60,6 +62,10 @@ if (isset($_GET['page'])) {
 
                     case 'edit':
                         include_once './pages/transactions/edit_trx.php';
+                        break;
+
+                    case 'installment':
+                        include_once './pages/transactions/installment.php';
                         break;
 
                     default:
