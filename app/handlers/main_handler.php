@@ -11,6 +11,7 @@ global $session_user_id;
 
 function to_rupiah($number)
 {
-    $result = "Rp " . number_format($number, 2, ',', '.');
+
+    $result = "Rp " . number_format(empty($number) ? 0 : $number, 2, ',', '.');
     return $result;
 }
