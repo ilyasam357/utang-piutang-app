@@ -102,12 +102,32 @@ foreach ($transactions as $transaction):
                         <i class="bi bi-trash3-fill"></i>
                     </button>
                 </form>
-                <button class="btn btn-info btn-sm">
+                <button class="btn btn-info btn-sm" type="button" data-bs-toggle="modal"
+                    data-bs-target="#trx_modal_<?=$transaction['id']?>">
                     <i class="bi bi-eye-fill"></i>
                 </button>
             </td>
 
         </tr>
+        <div class="modal fade" id="trx_modal_<?=$transaction['id']?>" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel"><?=strtoupper($transaction['type'])?>
+                            #<?=$transaction['id']?></h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        ...
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
         <?php endforeach?>
         </tbody>
     </table>
