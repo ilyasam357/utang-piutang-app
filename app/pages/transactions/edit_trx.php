@@ -2,6 +2,23 @@
     <h1>edit <?=$title?></h1>
     <div class="row">
         <div class="col-6 mb-4">
+            <?php
+if (isset($alert)):
+?>
+            <div class="alert alert-<?=$alert[0]?> alert-dismissible fade show" role="alert">
+                <ul>
+                    <?php
+
+foreach ($alert[1] as $alert_msg) {
+    echo '<li><strong>' . $alert_msg . '</strong></li>';
+}
+?>
+                </ul>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" arial-label="Close"></button>
+            </div>
+            <?php
+endif;
+?>
             <form action="" method="post">
                 <div class="mb-3">
                     <label for="use_for" class="form-label">Kegunaan</label>

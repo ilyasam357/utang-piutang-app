@@ -1,6 +1,6 @@
 <div class="container">
     <div class="row">
-        <div class="col-md-4"></div>
+
         <div class="col-md-4">
             <h1 class="ms-5">Profil</h1>
             <div class="card shadow rounded border border-success  " style="width:15rem;">
@@ -20,9 +20,9 @@
                 </div>
                 <a class="btn btn-success" href="/app/index.php?page=profile&action=edit"> edit </a>
             </div>
-
         </div>
-        <div class="col-md-4"></div>
+
 
 
     </div>
+</div>

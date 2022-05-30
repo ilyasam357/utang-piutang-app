@@ -29,9 +29,16 @@ endif;
                     <table class="table">
                         <tbody>
                             <tr>
-                                <th scope="col">First</th>
-
-                                <th scope="col">Handle</th>
+                                <th scope="row">Jumlah Hutang</th>
+                                <td><?=to_rupiah($transaction['nominal'])?></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Jumlah Angsuran</th>
+                                <td><?=to_rupiah($transaction['temp_nominal'])?></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Sisa Angsuran</th>
+                                <td><?=to_rupiah($transaction['nominal'] - $transaction['temp_nominal'])?></td>
                             </tr>
                         </tbody>
                     </table>

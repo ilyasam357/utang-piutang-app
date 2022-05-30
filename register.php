@@ -18,7 +18,7 @@ include_once __DIR__ . '/app/auth/register_handler.php';
 
 <div class="container">
     <div class="row">
-        <div class="col-md-4"></div>
+
         <div class="col-md-4 mb-5">
             <h1 class="pt-5 pb-5">Register</h1>
 

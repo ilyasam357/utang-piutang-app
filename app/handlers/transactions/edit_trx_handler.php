@@ -32,7 +32,7 @@
 //             array_push($errors, "gak boleh dari sebelas");
 //         }
 
-//         $insert = mysqli_query($con, "UPDATE `transactions` SET `type`='[value-2]',`user_id`='[value-3]',`use_for`='[value-4]',`person_id`='[value-5]',`nominal`='[value-6]',`temp_nominal`='[value-7]',`status`='[value-8]',`transaction_at`='[value-9]',`due_date`='[value-10]',`created_at`='[value-11]',`updated_at`='[value-12]' WHERE 1");
+//         $insert = mysqli_query($con, "UPDATE `transactions` SET `use_for`='$use_for',`person_id`='$person',`nominal`='$nominal',`transaction_at`='  $transaction_at',`due_date`=' $due_date' WHERE id ='$session_user_id'");
 
 //         if ($insert) {
 //             $alert = ['success', ['Berhasil di tambah  kan  ']];
