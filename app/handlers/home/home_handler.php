@@ -10,3 +10,14 @@ foreach ($trxType as $type) {
     $result = 'result' . ucwords($type);
     $$result = mysqli_fetch_assoc($$amout);
 }
+
+$trxType = ['debt', 'receivable'];
+
+foreach ($trxType as $type) {
+    $count = 'count' . ucwords($type);
+// $$ nama nya reference variable , yaitu jadiin value untuk sebuah variable
+    $$count = mysqli_query($con, "SELECT * FROM transactions WHERE type = '$type' AND user_id=' $session_user_id';");
+
+    $resultCount = 'resultCount' . ucwords($type);
+    $$resultCount = mysqli_num_rows($$count);
+}

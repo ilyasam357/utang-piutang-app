@@ -7,7 +7,7 @@
             <div class="card text-dark bg-success mb-3 text-white" style=" height: 170px;">
                 <div class="card-header text-center">Jumlah Hutang</div>
                 <div class="card-body">
-                    <h1 class=" text-center"><?=$resultDebt['nominal']?></h1>
+                    <h1 class=" text-center fs-4"><?=to_rupiah($resultDebt['nominal'])?></h1>
 
                 </div>
             </div>
@@ -16,7 +16,7 @@
             <div class="card text-dark bg-success mb-3 text-white" style=" height: 170px;">
                 <div class="card-header text-center">Jumlah Piutang</div>
                 <div class="card-body">
-                    <h1 class=" text-center"><?=$resultReceivable['nominal']?></h1>
+                    <h1 class=" text-center fs-4"><?=to_rupiah($resultReceivable['nominal'])?></h1>
                 </div>
             </div>
         </div>
@@ -24,7 +24,7 @@
             <div class="card text-dark bg-success mb-3 text-white" style="height: 170px;">
                 <div class="card-header text-center">Jumlah Trx Hutang</div>
                 <div class="card-body">
-                    <h1 class=" text-center fs-4">1.000.000.00</h1>
+                    <h1 class=" text-center fs-4"><?=$resultCountDebt?></h1>
 
                 </div>
             </div>
@@ -33,7 +33,7 @@
             <div class="card text-dark bg-success mb-3 text-white" style=" height: 170px;">
                 <div class="card-header text-center">Jumlah Trx Hutang</div>
                 <div class="card-body">
-                    <h1 class=" text-center fs-4">1.000.000.00</h1>
+                    <h1 class=" text-center fs-4"><?=$resultCountReceivable?></h1>
 
                 </div>
             </div>
