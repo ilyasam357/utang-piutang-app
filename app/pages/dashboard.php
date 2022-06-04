@@ -44,7 +44,7 @@
                 <div class="card-body">
 
                     <ol>
-                        <li> fulan </li>
+                        <li> </li>
                     </ol>
                     <a href="" class="btn btn-link">More...</a>
                 </div>

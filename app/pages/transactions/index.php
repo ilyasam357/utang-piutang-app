@@ -136,37 +136,76 @@ foreach ($transactions as $transaction):
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <table class="table table-striped table-bordered mt-4">
-                        <thead class="table-dark">
-                            <tr>
-                                <th>NO</th>
-                                <th>Untuk</th>
-                                <th>Orang</th>
-                                <th>Nominal</th>
-                                <th>Status</th>
-                                <th>tanggal hutang</th>
-                                <th>Jatuh Tempo</th>
-                                <th>created at</th>
-                                <th>Update at</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><?=$num++?></td>
-                                <td><?=$transaction['use_for']?></td>
-                                <td><?=$transaction['name']?></td>
-                                <td><?=$transaction['nominal']?></td>
-                                <td>unpaid</td>
-                                <td><?=date("d F Y H:i:s", strtotime($transaction['transaction_at']))?></td>
-                                <td><?=date("d F Y H:i:s", strtotime($transaction['due_date']))?></td>
-                                <td><?=date("d F Y H:i:s", strtotime($transaction['created_at']))?></td>
-                                <td><?=date("d F Y H:i:s", strtotime($transaction['updated_at']))?></td>
-                            </tr>
+                    <div class="container">
+                        <div class="row">
 
-                        </tbody>
-                    </table>
+                            <div class="col">
+                                <table class="table table-bordered">
+                                    <tbody>
+                                        <tr>
+                                            <td class="fw-bold">Trx Id </td>
+                                            <td><?=strtoupper($transaction['type'])?>
+                                                #<?=$transaction['id']?></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="fw-bold">Tipe</td>
+                                            <td><?=$transaction['type']?></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="fw-bold">Orang</td>
+                                            <td><?=$transaction['name']?></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="fw-bold">Untuk</td>
+                                            <td><?=$transaction['use_for']?></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="fw-bold">Nominal</td>
+                                            <td><?=$transaction['nominal']?></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="fw-bold">Installment</td>
+                                            <td>0</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="col">
+                                <table class="table table-bordered">
+                                    <tbody>
+                                        <tr>
+                                            <td class="fw-bold">Status</td>
+                                            <td>
+                                                <span
+                                                    class="badge bg-<?=$transaction['status_badge_color'][0]?> <?=$transaction['status_badge_color'][1]?>"><?=$transaction['status']?>
+                                                </span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="fw-bold">Transaction At</td>
+                                            <td><?=date("d F Y H:i:s", strtotime($transaction['transaction_at']))?></td>
+                                        </tr>
+
+                                        <tr>
+                                            <td class="fw-bold">Created At</td>
+                                            <td><?=date("d F Y H:i:s", strtotime($transaction['created_at']))?></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="fw-bold">Updated At</td>
+                                            <td><?=date("d F Y H:i:s", strtotime($transaction['updated_at']))?></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="fw-bold">Due Date</td>
+                                            <td><?=date("d F Y H:i:s", strtotime($transaction['due_date']))?></td>
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="modal-footer">
+                <div class=" modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     <button type="button" class="btn btn-primary">Save changes</button>
                 </div>
